@@ -1,0 +1,286 @@
+a {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    font-weight: 500;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.top-title {
+    width: 100%;
+    background-color: #fa921f;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.top-title h3 {
+    width: 35%;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    padding: 2rem 10px;
+}
+
+.side-bar {
+    width: 10%;
+    margin: 20px;
+}
+
+.side-box {
+    margin-bottom: 20px;
+    background-color: white;
+    color: #0000FF;
+    padding: 0px 30px;
+    box-shadow: 0 0px 50px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.side-box p {
+    font-size: 15px;
+}
+
+.side-box:hover {
+    color: white;
+    background-color: #fa921f;
+}
+
+.body-container {
+    width: 100%;
+}
+
+.title-box {
+    margin: 20px;
+    background-color: white;
+    color: #14257D;
+    padding: 0px 30px;
+    box-shadow: 0 0px 50px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.title-box h2 {
+    margin: 0px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.title-box a{
+    margin: 14px;
+    padding: 10px;
+    background-color: #5cb85c;
+}
+
+.title-box a:hover {
+    background-color: #009900;
+}
+
+.record-list {
+    margin: 20px;
+    background-color: white;
+    color: #14257D;
+    padding: 30px;
+    box-shadow: 0 0px 50px rgba(0,0,0,0.08);
+}
+
+.listing {
+    border: 1px solid #ced4da;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 14px;
+}
+
+.listing thead {
+    background-color: #14257D;
+    color: white;
+}
+
+.listing th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.listing td {
+    padding: 8px;
+    color: black;
+}
+
+.listing td a{
+    color: #0000FF;
+}
+
+.action {
+    text-align: center;
+    width: 65px;
+}
+
+.action a {
+    padding: 7px;
+    font-size: 15px;
+    color: white !important;
+}
+
+.view {
+    background-color: #5bc0de;
+}
+
+.view:hover {
+    background-color: #28a1c5;
+}
+
+.search-sort {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search span {
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: black;
+    font-size: 15px;
+}
+
+.search select {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid #cecece;
+    outline: none;
+    margin-right: 10px;
+}
+
+.search input {
+    width: 350px !important;
+    padding: 10px 10px 10px 35px !important;
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid #cecece;
+}
+
+.search i {
+    padding: 12px 12px;
+    position: absolute;
+    font-size: 16px;
+    left: 195px;
+    color: black;
+}
+
+.search input:hover {
+    border-color: black;
+    background-color: #ffffff !important;
+}
+
+.sort {
+    margin: 5px 5px 5px 20px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: black;
+}
+
+.sort span {
+    font-size: 15px;
+}
+
+.sort select {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 15px;
+    border: 1px solid #cecece;
+    outline: none;
+}
+
+.sort select:hover {
+    border-color: black;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 10px 0;
+}
+
+.pagination-nav {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-nav a {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.pagination-nav a:hover {
+    background-color: #218838;
+}
+
+.pagination-nav a.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    pointer-events: none;
+}
+
+.pagination-info {
+    margin: 0 10px;
+    font-weight: bold;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.pagination-settings {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-form {
+    display: flex;
+    align-items: center;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.pagination-button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+    background-color: #218838;
+}
+
+#currentPage {
+    width: 45px;
+    margin-right: 5px;
+    padding: 3px;
+}
+
+.itemsPerPage {
+    margin: 0 10px;
+}

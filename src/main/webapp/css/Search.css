@@ -1,0 +1,117 @@
+strong {
+    font-weight: bold;
+
+    color: red;
+}
+
+input[type=text] {
+    width: 170px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+
+.search-block2 {
+    position: relative;
+    width: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.search-block2 select {
+    width: 140px;
+    height: 60px !important;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.search-block2 input {
+    width: 600px;
+    height: 60px !important;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.search-block2 input:last-child {
+    width: 88px;
+    height: 55px !important;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #f26f21;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    transition: 0.1s;
+}
+
+.search-block2 input:last-child:hover {
+    background-color: #fa921f;
+    letter-spacing: 0;
+}
+
+
+#search-bar2 {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.search-results2 {
+    position: absolute;
+    top: 100%; /* Đặt ngay dưới thanh tìm kiếm */
+    left: 0;
+    width: 100%;
+    max-height: 400px; /* Giới hạn chiều cao và cho phép cuộn */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Để nó xuất hiện ở trên các phần tử khác */
+}
+
+.book-card2 {
+    display: flex;
+    align-items: center; /* Canh giữa các items theo chiều dọc */
+    padding: 8px;
+    border-bottom: 1px solid #eaeaea; /* Tạo ranh giới giữa các kết quả */
+    cursor: pointer;
+}
+
+.book-card2:last-child {
+    border-bottom: none; /* Loại bỏ viền dưới ở kết quả cuối cùng */
+}
+
+.book-card2:hover {
+    background-color: #f5f5f5;
+}
+
+.book-img2 {
+    width: 40px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.book-title2, .book-author2, .book-publisher2, .book-genres2, .book-year2, .book-isbn2, .book-language2 {
+    font-size: 14px;
+    margin: 0 8px;
+}
+
+.book-title2 {
+    font-weight: bold;
+}
+
+.genre2 {
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 5px;
+}

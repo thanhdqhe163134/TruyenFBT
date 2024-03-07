@@ -1,0 +1,167 @@
+a {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+    color: #14257D;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a i {
+    padding: 16px;
+}
+
+.top-title {
+    width: 100%;
+    background-color: #fa921f;
+    color: #fff;
+    font-size: 15px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.top-title h3 {
+    width: 35%;
+    text-align: center;
+}
+
+.mainpage {
+    display: flex;
+}
+
+.side-bar {
+    height: 50%;
+    margin: 60px 0px 60px 50px;
+    background-color: white;
+    color: #14257D;
+    padding: 70px 30px;
+    box-shadow: 0 0px 50px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.avatar {
+    text-align: center;
+    border-bottom: 1px solid #cecece;
+    padding-bottom: 20px;
+}
+
+.avatar img {
+    width: 70%;
+}
+
+.avatar h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.avatar span {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.menu a:first-child {
+    padding-top: 16px;
+}
+
+.menu a:hover {
+    color: #fa921f;
+}
+
+form {
+    width: 60%;
+}
+
+.profile-content {
+    margin: 60px 50px;
+    width: 88%;
+    background-color: white;
+    color: #14257D;
+    padding: 50px;
+    box-shadow: 0 0px 50px rgba(0,0,0,0.08);
+}
+
+.profile-content h2 {
+    margin: 0;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #cecece;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.profile-list {
+    width: 100%;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-list p {
+    padding: 10px;
+}
+
+.profile-list h3 {
+    padding: 10px;
+    width: 25%;
+}
+
+.pass-content {
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 14px;
+}
+
+.pass-content h3 {
+    padding: 10px;
+}
+
+.pass-content input {
+    width: 100%;
+    margin-left: 5px;
+    padding: 8px;
+    font-size: 16px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border: 1px solid #cecece;
+    border-radius: 8px;
+}
+
+.pass-content input:hover {
+    border-color: black;
+}
+
+.pass-content p {
+    margin-left: 10px;
+    color: #ff0000;
+}
+
+.submit {
+    text-align: end;
+}
+
+.submit input {
+    width: 120px;
+    margin: 40px 0;
+    padding: 8px;
+    background-color: #5cb85c;
+    color: #fff;
+    font-weight: 545;
+    letter-spacing: 0.3px;
+    border-radius: 5px;
+    border: none;
+}
+
+.submit input:hover {
+    background-color: #009900;
+}

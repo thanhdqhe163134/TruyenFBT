@@ -1,0 +1,361 @@
+
+
+
+
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    /* justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 110px; */
+    background-color: white;
+    padding: 0 3%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    /* width: 25%; */
+}
+
+.logo img {
+    width: 100px;
+}
+
+.navbar {
+    /* width: 50%; */
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.navbar ul li a:hover {
+    color: #fa921f;
+}
+
+.login {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.login a {
+    /* background-color: #fa921f;
+    padding: 15px;
+    text-decoration: none;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 1px;
+    transition: 0.1s; */
+}
+
+.login a:hover {
+    letter-spacing: 0;
+}
+
+.banner {
+    background-image: url("https://i.imgur.com/Mu7zRdT.jpg");
+    background-size: cover;
+    background-position-y: 45%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    text-align: center;
+    color: #fff;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.welcome h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.8rem;
+}
+
+.welcome span {
+    color: #fa921f;
+}
+
+.welcome p {
+    margin: 10px 0;
+    font-size: 15px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.search-block {
+    width: 65%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+
+}
+
+.search-block input {
+    width: 1000px;
+    height: 60px !important;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.search-block input:last-child {
+    width: 88px;
+    height: 55px !important;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #f26f21;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    transition: 0.1s;
+}
+
+input:last-child:hover {
+    background-color: #fa921f;
+    letter-spacing: 0;
+}
+
+.main-section {
+    width: 100%;
+    height: 355px;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.title h2 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+}
+
+.block-step {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.block-step h2 {
+    font-weight: 200;
+}
+
+.step {
+    width: 200px;
+    height: 130px;
+}
+
+.step i {
+    font-size: 60px;
+    color: #fa921f;
+}
+
+.next i {
+    height: 130px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    color: #225027;
+}
+
+.footer {
+    background-color: #f26f21;
+    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    height: 280px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer h2 {
+    letter-spacing: 1px;
+}
+
+.footer-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+    padding: 20px 0 20px 80px;
+    line-height: 30px;
+}
+
+.contact i {
+    padding-right: 10px;
+}
+
+.follow {
+    width: 30%;
+    padding: 20px 0 20px 0;
+    line-height: 30px;
+}
+
+.follow ul {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.follow i {
+    font-size: 50px;
+}
+
+.ytb {
+    padding-left: 40px;
+}
+
+/* qqqqqqqqqqq */
+.avatar-user {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.dropdown-items:hover .menu-items {
+    visibility: visible;
+}
+
+.menu-items {
+    list-style: none;
+    position: absolute;
+    visibility: hidden;
+    border: 1px solid #ccc;
+    display: block;
+    border-radius: 8px;
+    padding-left: 0px;
+    top: 52px;
+    right: 28px;
+    background: white;
+    z-index: 10;
+}
+
+.menu-items a {
+    text-decoration: none;
+}
+
+.menu-items li {
+    color: black;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.menu-items li:hover {
+    background-color: beige;
+}
+
+.dropdown-items {
+    display: flex;
+}
+
+.navbar ul li {
+    padding: 16px 36px;
+}
+
+.search-block {
+    width: 100%;
+    display: flex;
+    max-width: 900px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.search-block select {
+    border-radius: 5px;
+    width: 125px;
+    height: 60px !important;
+    font-size: 20px;
+    padding: 5px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+search-block select option {
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+search-block select option:hover {
+    background-color: #fa921f;
+    letter-spacing: 0;
+}
+
+.search-block input {
+    width: 700px;
+    height: 60px !important;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.search-block input:last-child {
+    width: 88px;
+    height: 55px !important;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #f26f21;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    transition: 0.1s;
+}
+
+.search-block input:last-child:hover {
+    background-color: #fa921f;
+    letter-spacing: 0;
+}
