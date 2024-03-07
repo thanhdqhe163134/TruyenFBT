@@ -17,7 +17,7 @@
     String role = "";
     String username = "";
     boolean isLoggedIn = false;
-    int user_id = Integer.parseInt(null);
+    int user_id = 0;
 
     if (session != null) {
         Account loggedInUser = (Account) session.getAttribute("loggedInUser");
@@ -72,6 +72,19 @@
                                 </div>
                             </li>
                             <br>
+                            <li class="row">
+                                <p class="name col-xs-3">
+                                    <i class="fa fa-calendar"></i> Created date
+                                </p>
+                                <p class="col-xs-9"><%= comic.getCreatedDate() %></p>
+                            </li>
+                            <br>
+                            <li class="row">
+                                <p class="name col-xs-3">
+                                    <i class="fa fa-calendar"></i> Updated date
+                                </p>
+                                <p class="col-xs-9"><%= comic.getUpdatedDate() %></p>
+                            </li>
                             <br>
                             <li class="row">
                                 <p class="name col-xs-3">
@@ -123,17 +136,20 @@
                             <i class="fa fa-save"></i> Save All
                         </button>
                     </div>
+
                     <div class="clear"></div>
                 </div>
-                <a href="<%= "comic?id=" + comic.getId() %>"><button type="button" class="cancel-button">
+                <a href="<%= "comic?title=" + comic.getTitle() %>"><button type="button" class="cancel-button">
                     <i class="fa fa-close" style="size: 20px;"> </i>
                 </button></a>
 
             </div>
 
-        </div>
 
+        </div>
     </form>
+</div>
+
 
 
     <script>

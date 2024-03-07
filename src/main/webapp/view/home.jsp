@@ -111,8 +111,8 @@
             </form>
 
             <% if (isAdmin) { %>
-            <a href="addBook?action=add">
-                <button class="add-button" style="z-index: 999">Add Book</button>
+            <a href="addComic">
+                <button class="add-button" style="z-index: 999">Add Comic</button>
             </a>
             <% } %>
         </div>

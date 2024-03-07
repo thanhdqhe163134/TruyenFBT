@@ -127,6 +127,8 @@ public class ComicDAO {
                     comic.setTitle(resultSet.getString("title"));
                     comic.setDescription(resultSet.getString("description"));
                     comic.setImg(resultSet.getString("img"));
+                    comic.setCreatedDate(resultSet.getTimestamp("createdDate"));
+                    comic.setUpdatedDate(resultSet.getTimestamp("updatedDate"));
                     comic.setGenres(new ArrayList<>());
                 }
                 Genre genre = new Genre();

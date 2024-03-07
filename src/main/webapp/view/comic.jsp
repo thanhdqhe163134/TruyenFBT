@@ -73,18 +73,6 @@
                         <h1 itemprop="name"><%= comic.getTitle() %></h1>
                         <div class="txt">
                             <ul class="list-info">
-                                <li class="author row">
-                                    <p class="name col-xs-3">
-                                        <i class="fa fa-user"></i> Author
-                                    </p>
-
-                                </li>
-                                <br>
-
-                                <br>
-
-                                <br>
-
                                 <li class="row">
                                     <p class="name col-xs-3">
                                         <i class="fa fa-eye"></i> Total views
@@ -92,12 +80,15 @@
                                     <p class="col-xs-9"><% %></p>
                                 </li>
                                 <% if (isAdmin) { %>
+                                <br>
+                                <br>
                                 <li class="row">
                                     <p class="name col-xs-3">
                                         <i class="fa fa-calendar"></i> Created date
                                     </p>
                                     <p class="col-xs-9"><%= comic.getCreatedDate() %></p>
                                 </li>
+                                <br>
                                 <li class="row">
                                     <p class="name col-xs-3">
                                         <i class="fa fa-calendar"></i> Updated date
@@ -133,14 +124,18 @@
                     </p>
                 </div>
                 <br>
+                <a href="<%= "comic?title=" + comic.getTitle() + "&chapter?=1" %>">
+                    <button class="action-button" type="button" style="font-size: 20px">Read now</button>
+                </a>
+                <a href="<%= "comic?title=" + comic.getTitle() + "&chapter?=1" %>">
+                    <button class="action-button" type="button" style="font-size: 20px; background: #009900">Continue Reading</button>
+                </a>
                 <% if (isAdmin) { %>
-                <a href="<%= "comic?id=" + comic.getId() + "&editMode=true" %>">
-                    <button class="action-button" type="button" style="font-size: 20px">Edit Comic</button>
+                <a href="<%= "comic?title=" + comic.getTitle() + "&editMode=true" %>">
+                    <button class="action-button" type="button" style="font-size: 20px; background: #0a86db">Edit Comic</button>
                 </a>
                 <% } %>
-                <form action="chapter" method="get" >
-                <button class="action-button" type="submit" style="font-size: 20px">Read</button>
-                </form>
+
             </div>
 
 
