@@ -50,8 +50,8 @@
 />
 
 <div class="container" style="width: 90%; margin: 2% auto;">
-    <form action="${pageContext.request.contextPath}/book" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="book_id" value="<%= comic.getId() %>" />
+    <form action="${pageContext.request.contextPath}/edit-comic" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <input type="hidden" name="id" value="<%= comic.getId() %>" />
         <div class="main_content">
             <div class="book_detail">
                 <div class="book_info">
@@ -108,7 +108,7 @@
                                     } %>
                                 <li class="li03">
                                     <a>
-                                        <input type="checkbox" id="genre<%= genre.getName() %>" name="genres" value="<%= genre.getName() %>" <%= checkedStr %> readonly/>
+                                        <input type="checkbox" id="genre<%= genre.getId() %>" name="genres" value="<%= genre.getId() %>" <%= checkedStr %> readonly/>
                                         <label for="genre<%= genre.getName() %>"><%= genre.getName() %></label>
                                     </a>
                                 </li>
@@ -174,6 +174,16 @@
 
             // Clear the input field
             newGenre.value = '';
+        }
+        function validateForm() {
+            var checkboxes = document.querySelectorAll('input[name="genres"]:checked');
+            var newGenreList = document.getElementById('newGenreList');
+            var newGenreElements = newGenreList.getElementsByTagName('input');
+            if (checkboxes.length == 0 && newGenreElements.length == 0) {
+                alert("Please select at least one genre or add a new one.");
+                return false;
+            }
+            return true;
         }
 
     </script>

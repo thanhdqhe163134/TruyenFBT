@@ -170,4 +170,34 @@ public class ComicDAO {
         return null;
     }
 
+    public String update(int id, String title, String description, String relativePath, String[] toArray) {
+        try {
+            String sql = "UPDATE Comic SET title = ?, description = ?, img = ?, updatedDate = ? WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, description);
+            preparedStatement.setString(3, relativePath);
+            preparedStatement.setTimestamp(4, new java.sql.Timestamp(System.currentTimeMillis()));
+            preparedStatement.setInt(5, id);
+            preparedStatement.executeUpdate();
+            if (preparedStatement.getUpdateCount() > 0) {
+                int comicId = getComicByTitle(title).getId();
+                String sql2 = "DELETE FROM ComicGenre WHERE comicId = ?";
+                PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+                preparedStatement2.setInt(1, comicId);
+                preparedStatement2.executeUpdate();
+                for (String genreId : toArray) {
+                    String sql3 = "INSERT INTO ComicGenre (comicId, genreId) VALUES (?, ?)";
+                    PreparedStatement preparedStatement3 = connection.prepareStatement(sql3);
+                    preparedStatement3.setInt(1, comicId);
+                    preparedStatement3.setInt(2, Integer.parseInt(genreId));
+                    preparedStatement3.executeUpdate();
+                }
+                return title;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
