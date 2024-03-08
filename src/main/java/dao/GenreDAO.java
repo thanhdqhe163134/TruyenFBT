@@ -14,7 +14,7 @@ public class GenreDAO {
 
     public List<Genre> getAll() {
         try{
-            String sql = "SELECT * FROM Genre";
+            String sql = "SELECT * FROM Genre WHERE deleted = 0";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             List<Genre> genres = new ArrayList<>();
@@ -33,7 +33,7 @@ public class GenreDAO {
 
     public Genre findByName(String newGenreName) {
         try{
-            String sql = "SELECT * FROM Genre WHERE name = ?";
+            String sql = "SELECT * FROM Genre WHERE name = ? AND deleted = 0";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, newGenreName);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -60,5 +60,16 @@ public class GenreDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void delete(String name) {
+        try {
+            String sql = "UPDATE Genre SET deleted = 1 WHERE name = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

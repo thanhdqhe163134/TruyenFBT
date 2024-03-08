@@ -5,6 +5,8 @@
 <%@ page import="model.Account" %>
 <%@ page import="model.Genre" %>
 <%@ page import="model.Comic" %>
+<%@ page import="model.Chapter" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <%
     session = request.getSession(false);
@@ -75,7 +77,7 @@
                     </a>
                         </label>
                         <% if (isAdmin) { %>
-                    <form action="deleteGenre" method="post" style="display: inline">
+                    <form action="delete-genre" method="post" style="display: inline">
                         <input type="hidden" name="genre" value="<%= genre.getName() %>"/>
                         <button type="submit" class="delete-genre-button">
                             <i class="fa-solid fa-trash"></i>
@@ -103,10 +105,8 @@
                 <select name="sortBy" onchange="document.getElementById('sort').submit();">
                     <option value="all" ${sortBy == null?"selected":""}>All</option>
                     <option value="newest" ${sortBy.equals("newest")?"selected":""}>Recent update</option>
-                    <option value="topWeek" ${sortBy.equals("topWeek")?"selected":""}>Top Week</option>
-                    <option value="topMouth" ${sortBy.equals("topMouth")?"selected":""}>Top Mouth</option>
-                    <option value="topYear" ${sortBy.equals("topYear")?"selected":""}>Top Year</option>
-                    <option value="topAll" ${sortBy.equals("topAll")?"selected":""}>Top All</option>
+                    <option value="views" ${sortBy.equals("views")?"selected":""}>Top Views</option>
+
                 </select>
             </form>
 
@@ -123,47 +123,58 @@
             <%
                 List<Comic> comicList = (List<Comic>) request.getAttribute("comicList");
                 if(comicList != null){
-                for (Comic comic : comicList) {
+                    for (Comic comic : comicList) {
             %>
             <div class="book-card" style="margin-left: 5px;">
-                <img
-                        src="<%= comic.getImg() %>"
-                        class="book-img"
-                        alt="<%= comic.getTitle() %>"
-                />
+                <a href="<%= "comic?title=" + comic.getTitle() %>">
+                    <img
+                            src="<%= comic.getImg() %>"
+                            class="book-img"
+                            alt="<%= comic.getTitle() %>"
+                    />
+                </a>
                 <div class="book-content">
-                    <h4 class="book-title"><%= comic.getTitle() %>
-                    </h4>
+                    <h4 class="book-title"><%= comic.getTitle() %></h4>
+                    <p class="name col-xs-3">
+                        <i class="fa fa-eye"></i> <%= comic.getViews() %>
+                    </p>
                     <div class="book-genres">
-
                         <%
+                            List<Chapter> chapters = comic.getChapters();
                             List<Genre> genres = comic.getGenres();
-                            genres = genres.stream().sorted(Comparator.comparing(Genre::getName)).collect(Collectors.toList());                            for (Genre genre : genres) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+                            genres = genres.stream().sorted(Comparator.comparing(Genre::getName)).collect(Collectors.toList());
+                            for (Genre genre : genres) {
                         %>
                         <a href="<%= "home?genre=" + genre.getName() %>">
                             <span class="book-genres"><%= genre.getName() %></span>
                         </a> <% } %>
-
                     </div>
+                    <% for (Chapter chapter : chapters) { %>
+                    <a href="<%= "comic?id=" + comic.getId() + "&chapter=" + chapter.getNumber() %>">
+                        Chapter <%= chapter.getNumber() %>
+                    </a>
+                    <span style="padding-left: 20px;  color: #777; font-size: 0.8em;"><%=sdf.format(chapter.getUpdatedDate()) %></span>
+                    <% } %>
 
                 </div>
                 <div class="button-action">
-                    <a href="<%= "comic?title=" + comic.getTitle() %>">
-                        <button class="detail-button">Detail</button>
-                    </a>
                     <% if (isAdmin) { %>
+                    <a href="<%= "comic?title=" + comic.getTitle() + "&editMode=true" %>">
+                        <button class="detail-button" style="background: #0a86db; padding: 2% 5%;">Edit</button>
+                    </a>
                     <form action="delete-comic" method="post">
                         <input
                                 type="hidden"
                                 name="id"
                                 value="<%= comic.getId() %>"
                         />
-                        <button class="delete-button">Delete</button>
+                        <button class="detail-button" style="background: red">Delete</button>
                     </form>
                     <% } %>
                 </div>
             </div>
-
             <% } }%>
         </div>
 

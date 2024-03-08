@@ -28,14 +28,8 @@ public class ComicListServlet extends HttpServlet {
             comicList = comicDAO.getAll();
         } else if (sortBy.equals("newest")) {
             comicList = comicDAO.getAllSortedByUpdatedDate();
-        } else if (sortBy.equals("topAll")) {
-            comicList = comicDAO.getAllSortedByReadingProgress(0);
-        } else if (sortBy.equals("topWeek")) {
-            comicList = comicDAO.getAllSortedByReadingProgress(7);
-        } else if (sortBy.equals("topMouth")) {
-            comicList = comicDAO.getAllSortedByReadingProgress(30);
-        } else if (sortBy.equals("topYear")) {
-            comicList = comicDAO.getAllSortedByReadingProgress(365);
+        } else if (sortBy.equals("views")) {
+            comicList = comicDAO.getAllSortedByViews();
         } else {
             comicList = comicDAO.getAll();
         }

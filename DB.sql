@@ -23,6 +23,7 @@ CREATE TABLE Comic
     title       NVARCHAR(255),
     description NVARCHAR( MAX),
     img			NVARCHAR(255),
+    viewCount   INT DEFAULT 0,
     createdDate DATETIME,
     updatedDate DATETIME,
     deleted     BIT DEFAULT 0
@@ -49,7 +50,7 @@ CREATE TABLE Chapter
 (
     id          INT PRIMARY KEY IDENTITY(1,1),
     comicId     int,
-    nubmer      int,
+    number      int,
     createdDate DATETIME,
     updatedDate DATETIME,
     deleted     BIT DEFAULT 0,
@@ -75,10 +76,12 @@ CREATE TABLE ReadingProgress
     chapterId   INT,
     createdDate DATETIME,
     updatedDate DATETIME,
+    updateCount INT DEFAULT 0,
     deleted     BIT DEFAULT 0,
     FOREIGN KEY (accountId) REFERENCES Account (id),
     FOREIGN KEY (chapterId) REFERENCES Chapter (id)
 );
+
 
 CREATE TABLE Comment
 (

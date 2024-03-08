@@ -9,6 +9,8 @@ public class Comic {
     private String description;
 
     private String img;
+
+    private int views;
     private Timestamp createdDate;
     private Timestamp updatedDate;
     private boolean deleted;
@@ -61,6 +63,27 @@ public class Comic {
         this.deleted = deleted;
         this.genres = genres;
         this.chapters = chapters;
+    }
+
+    public Comic(int id, String title, String description, String img, int views, Timestamp createdDate, Timestamp updatedDate, boolean deleted, List<Genre> genres, List<Chapter> chapters) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.img = img;
+        this.views = views;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+        this.genres = genres;
+        this.chapters = chapters;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public List<Genre> getGenres() {
