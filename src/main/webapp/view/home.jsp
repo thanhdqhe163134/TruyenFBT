@@ -111,7 +111,7 @@
             </form>
 
             <% if (isAdmin) { %>
-            <a href="addComic">
+            <a href="add-comic">
                 <button class="add-button" style="z-index: 999">Add Comic</button>
             </a>
             <% } %>

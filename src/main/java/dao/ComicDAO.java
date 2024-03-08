@@ -4,10 +4,7 @@ import model.Comic;
 import model.Genre;
 import util.DBConnect;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.*;
 
 public class ComicDAO {
@@ -132,12 +129,45 @@ public class ComicDAO {
                     comic.setGenres(new ArrayList<>());
                 }
                 Genre genre = new Genre();
-                genre.setName(resultSet.getString("name"));
-                comic.getGenres().add(genre);
+                String name = resultSet.getString("name");
+                if(name != null) {
+                    genre.setName(name);
+                    comic.getGenres().add(genre);
+                }
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return comic;
     }
+
+    public String create(String title, String description, String relativePath, String[] toArray) {
+        try {
+            String sql = "INSERT INTO Comic (title, description, img, createdDate, updatedDate) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, title);
+            preparedStatement.setString(2, description);
+            preparedStatement.setString(3, relativePath);
+            preparedStatement.setTimestamp(4, new java.sql.Timestamp(System.currentTimeMillis()));
+            preparedStatement.setTimestamp(5, new java.sql.Timestamp(System.currentTimeMillis()));
+            preparedStatement.executeUpdate();
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int comicId = generatedKeys.getInt(1);
+                for (String genreId : toArray) {
+                    String sql2 = "INSERT INTO ComicGenre (comicId, genreId) VALUES (?, ?)";
+                    PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+                    preparedStatement2.setInt(1, comicId);
+                    preparedStatement2.setInt(2, Integer.parseInt(genreId));
+                    preparedStatement2.executeUpdate();
+                }
+                return title;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

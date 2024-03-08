@@ -30,4 +30,35 @@ public class GenreDAO {
         }
         return null;
     }
+
+    public Genre findByName(String newGenreName) {
+        try{
+            String sql = "SELECT * FROM Genre WHERE name = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, newGenreName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Genre genre = new Genre();
+                genre.setId(resultSet.getInt("id"));
+                genre.setName(resultSet.getString("name"));
+                return genre;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+    }
+        return null;
+    }
+
+    public Genre create(String newGenreName) {
+        try{
+            String sql = "INSERT INTO Genre (name) VALUES (?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, newGenreName);
+            preparedStatement.executeUpdate();
+            return findByName(newGenreName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

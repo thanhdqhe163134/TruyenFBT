@@ -22,48 +22,15 @@ function addGenre() {
 }
 
 
-function searchInstantly() {
-    let query = document.getElementById('search-title').value;
-    let resultsContainer = document.querySelector('.search-results');
-    if (query === "") {
-        resultsContainer.style.display = "none";
-        return;
+function validateForm() {
+    var checkboxes = document.querySelectorAll('input[name="genres"]:checked');
+    var newGenreList = document.getElementById('newGenreList');
+    var newGenreElements = newGenreList.getElementsByTagName('input');
+    if (checkboxes.length == 0 && newGenreElements.length == 0) {
+        alert("Please select at least one genre or add a new one.");
+        return false;
     }
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'searchBook?query=' + query + "&action=title", true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            resultsContainer.style.display = "block";
-            resultsContainer.innerHTML = xhr.responseText;
-        }
-    };
-    xhr.send();
+    return true;
 }
-
-function searchOnEnter() {
-    let title = document.getElementById('search-title').value;
-
-    let form = document.createElement('form');
-    form.method = 'GET';
-    form.action = '/library/book';
-
-    let inputTitle = document.createElement('input');
-    inputTitle.type = 'hidden';
-    inputTitle.name = 'title';
-    inputTitle.value = title;
-
-    let inputAction = document.createElement('input');
-    inputAction.type = 'hidden';
-    inputAction.name = 'action';
-    inputAction.value = 'add';
-
-    form.appendChild(inputTitle);
-    form.appendChild(inputAction);
-
-    document.body.appendChild(form);
-
-    form.submit();
-}
-
 
 

@@ -53,7 +53,7 @@
 <div class="book-detail1">
   <!-- Have information Mode -->
   <div class="container" style="width: 90%; margin: 2% auto;">
-    <form action="${pageContext.request.contextPath}/addBook" method="post" enctype="multipart/form-data">
+    <form action="${pageContext.request.contextPath}/add-comic" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
       <div class="main_content">
         <div class="book_detail">
           <div class="book_info">
@@ -96,7 +96,7 @@
                     } %>
                   <li class="li03">
                     <a>
-                      <input type="checkbox" id="genre<%= genre.getName() %>" name="genres" value="<%= genre.getName() %>" <%= checkedStr %> readonly/>
+                      <input type="checkbox" id="genre<%= genre.getId() %>" name="genres" value="<%= genre.getId() %>" <%= checkedStr %> readonly required/>
                       <label for="genre<%= genre.getName() %>"><%= genre.getName() %></label>
                     </a>
                   </li>
