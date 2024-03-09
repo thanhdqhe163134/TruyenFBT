@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>Truyenqq</artifactId>
+    <artifactId>TruyenFBT</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Truyenqq</name>
+    <name>TruyenFBT</name>
     <packaging>war</packaging>
 
     <properties>
@@ -54,6 +54,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

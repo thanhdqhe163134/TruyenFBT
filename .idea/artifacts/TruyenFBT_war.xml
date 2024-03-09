@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="Truyenqq-1.0-SNAPSHOT.war">
+    <root id="archive" name="TruyenFBT-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="TruyenFBT:war exploded" />
     </root>
   </artifact>

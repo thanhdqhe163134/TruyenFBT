@@ -13,6 +13,7 @@ public class Comment {
     private Timestamp updatedDate;
     private boolean deleted;
 
+
     public Comment() {
     }
 

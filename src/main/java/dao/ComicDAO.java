@@ -375,7 +375,64 @@ public class ComicDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-    }
+        }
         return new ArrayList<>(comics.values());
     }
+
+    public void updateViewCount() {
+        try {
+            String sql = "UPDATE Comic SET [view] = [view] + 1";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Comic> getComicHistory(int id) {
+        Map<Integer, Comic> comics = new LinkedHashMap<>();
+        try {
+            String sql = "SELECT c.*, g.*, ch.number, ch.updatedDate as updatedDateC FROM Comic c\n" +
+                    "JOIN ComicGenre cg ON c.id = cg.comicId\n" +
+                    "JOIN Genre g ON cg.genreId = g.id\n" +
+                    "JOIN Chapter ch ON ch.comicId = c.id\n" +
+                    "JOIN ReadingProgress rp ON rp.chapterId = (SELECT TOP 1 ch.id from Chapter ch WHERE ch.comicId = c.id AND ch.id = rp.chapterId)\n" +
+                    "WHERE rp.accountId = ? and c.deleted = 0 and g.deleted = 0 and ch.id = rp.chapterId ORDER BY rp.updatedDate DESC";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Comic comic = null;
+            while (resultSet.next()) {
+                int comicId = resultSet.getInt("id");
+                comic = comics.get(comicId);
+                if (comic == null) {
+                    comic = new Comic();
+                    comic.setId(comicId);
+                    comic.setTitle(resultSet.getString("title"));
+                    comic.setDescription(resultSet.getString("description"));
+                    comic.setImg(resultSet.getString("img"));
+                    comic.setViews(resultSet.getInt("view"));
+                    comic.setUpdatedDate(resultSet.getTimestamp("updatedDate"));
+                    comic.setGenres(new ArrayList<>());
+                    comics.put(comicId, comic);
+                }
+                Genre genre = new Genre();
+                genre.setName(resultSet.getString("name"));
+                comic.getGenres().add(genre);
+                List<Chapter> chapters = new ArrayList<>();
+                Chapter chapter = new Chapter();
+                chapter.setNumber(resultSet.getInt("number"));
+                chapter.setUpdatedDate(resultSet.getTimestamp("updatedDateC"));
+
+                chapters.add(chapter);
+                comic.setChapters(chapters);
+
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>(comics.values());
+    }
+
 }

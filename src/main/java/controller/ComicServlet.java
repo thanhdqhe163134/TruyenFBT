@@ -10,8 +10,11 @@ import jakarta.servlet.annotation.*;
 import model.Account;
 import model.Chapter;
 import model.Comic;
+import model.Comment;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "ComicServlet", value = "/comic")
 public class ComicServlet extends HttpServlet {
@@ -39,20 +42,28 @@ public class ComicServlet extends HttpServlet {
             }
         }
         if(action != null && action.equals("continueReading")) {
-            Chapter currentChapter = readingProgressDAO.getReadingProgress(accountId);
+            Chapter currentChapter = readingProgressDAO.getReadingProgress(accountId,Integer.parseInt(id));
             if (currentChapter != null) {
                 response.sendRedirect("comic?id=" + id + "&chapter=" + currentChapter.getNumber());
+
             } else {
                 response.sendRedirect("comic?id=1&chapter=1");
             }
         } else {
 
             if (chapter != null && !chapter.isEmpty() && !chapter.equals("0") && !id.equals("0")) {
+                Chapter currentChapter = new Chapter();
+                if(action != null && action.equals("add")){
+                    currentChapter = chapterDAO.addChapter(Integer.parseInt(chapter), Integer.parseInt(id));
+                } else {
+                    currentChapter = chapterDAO.getChapterByNumber(Integer.parseInt(chapter), Integer.parseInt(id));
+                }
 
-                Chapter currentChapter = chapterDAO.getChapterByNumber(Integer.parseInt(chapter), Integer.parseInt(id));
+
                 request.setAttribute("chapter", currentChapter);
                 request.setAttribute("allChapters", chapterDAO.getAllChaptersByComicId(Integer.parseInt(id)));
                 request.getRequestDispatcher("view/chapter.jsp").forward(request, response);
+                comicDAO.updateViewCount();
 
 
             } else {

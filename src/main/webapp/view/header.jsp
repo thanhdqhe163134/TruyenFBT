@@ -89,7 +89,7 @@
                     <li><a href="myProfile?id=<%=user_id%>">Profile</a></li>
                     </label>
                     <label>
-                        <li><a href="loansUser?user_id=<%=user_id%>">History</a></li>
+                        <li><a href="history">History</a></li>
                     </label>
                     <label>
                         <li><a href="logout">Logout</a></li>

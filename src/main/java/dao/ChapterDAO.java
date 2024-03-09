@@ -5,10 +5,7 @@ import model.Comment;
 import model.Image;
 import util.DBConnect;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,5 +89,26 @@ public class ChapterDAO {
             e.printStackTrace();
         }
         return chapters;
+    }
+
+    public Chapter addChapter(int parseInt, int parseInt1) {
+        Chapter chapter = null;
+        try {
+            String sql = "INSERT INTO Chapter (comicId, number, createdDate, updatedDate) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, parseInt1);
+            preparedStatement.setInt(2, parseInt);
+            preparedStatement.setTimestamp(3, new java.sql.Timestamp(System.currentTimeMillis()));
+            preparedStatement.setTimestamp(4, new java.sql.Timestamp(System.currentTimeMillis()));
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if(rs.next()){
+                int id = rs.getInt(1);
+                chapter = getChapterByNumber(parseInt, parseInt1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return chapter;
     }
 }

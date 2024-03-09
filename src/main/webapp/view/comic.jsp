@@ -130,9 +130,15 @@
                 <a href="<%= "comic?id=" + comic.getId() + "&action=continueReading" %>">
                     <button class="action-button" type="button" style="font-size: 20px; background: #009900">Continue Reading</button>
                 </a>
+                <%
+                    List<Chapter> chapters = ((Comic)request.getAttribute("comic")).getChapters();
+                %>
                 <% if (isAdmin) { %>
                 <a href="<%= "comic?title=" + comic.getTitle() + "&editMode=true" %>">
                     <button class="action-button" type="button" style="font-size: 20px; background: #0a86db">Edit Comic</button>
+                </a>
+                <a href="<%= "comic?id=" + comic.getId() + "&chapter=" + (chapters.size() + 1) + "&action=add" %>">
+                    <button class="action-button" type="button" style="font-size: 20px; background: #30db0a">Add Chapter</button>
                 </a>
                 <% } %>
 
@@ -143,7 +149,6 @@
             <div class="chapter-list-container">
                 <ul class="chapter-list" style="margin-left: 20px">
                     <%
-                        List<Chapter> chapters = ((Comic)request.getAttribute("comic")).getChapters();
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                         for(int i = 0; i < chapters.size(); i++) {
                             Chapter chapter = chapters.get(i);
