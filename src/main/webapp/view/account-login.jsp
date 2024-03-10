@@ -33,6 +33,9 @@
             <input type="submit" value="Login" class="form-submit">
 
             <br>
+            <a href="register" class="back" style="background: #1fdb0a">
+                Register
+            </a>
 
             <a href="home" class="back">
                 Back Homepage

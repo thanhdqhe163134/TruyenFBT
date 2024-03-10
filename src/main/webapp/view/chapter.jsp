@@ -5,7 +5,11 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Account" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <html>
+<%
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+%>
 <%
     session = request.getSession(false);
     String role = "";
@@ -115,6 +119,159 @@
 <button onclick="topFunction()" id="top-button" class="fa fa-angle-up" title="Go to top"
         style="background: #fa921f"></button>
 
+
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="blog-comment">
+                <h3 class="text-success">Comments</h3>
+                <hr/>
+                <!-- Form to post a new comment -->
+                <% if (isLoggedIn) { %>
+                <form action="comment" method="post">
+                    <input type="hidden" name="chapterId" value="<%= chapter.getId() %>"/>
+                    <input type="hidden" name="action" value="add"/>
+                    <input type="hidden" name="accountId" value="<%= user_id %>"/>
+                    <input type="hidden" name="comicId" value="<%= chapter.getComicId() %>"/>
+                    <input type="hidden" name="number" value="<%=chapter.getNumber()%>">
+                    <div style="display: flex;">
+                                    <textarea
+                                            name="content"
+                                            placeholder="Add your comment here"
+                                            style="width: 92%; min-height: 80px"
+                                    ></textarea>
+                        <button style="
+                    max-height: 30px;
+                    width: 6%;
+                    border-color: #f18121;
+                    color: #f18121;
+                    background-color: white;
+                    border-radius: 4px;
+                  "
+                        >
+                            Send
+                        </button>
+                    </div>
+
+                </form>
+                <% } %>
+                <ul class="comments">
+                    <%
+                        for (Comment comment : comments) {
+                    %>
+                    <li class="clearfix">
+                        <img src="<%=comment.getImg() != null ? comment.getImg() : "img/user.png"%>"
+                             alt="<%=comment.getUsername()%>" class="avatar">
+                        <div class="post-comments">
+                            <p class="meta"><%= sdf.format(comment.getCreatedDate()) %> <a
+                                    href=""><%=comment.getUsername()%>
+                            </a>
+                                <i class="pull-right">
+                                            <span class="reply-comment" style="cursor: pointer; color: #0a86db"
+                                                  onclick="toggleReplyForm(<%= comment.getId() %>)"
+                                            ><i class="fa fa-comment"></i> Reply</span>
+                                    <% if(isAdmin || comment.getAccountId() == user_id){ %>
+                                    <a href="comment?id=<%=comment.getId()%>&comicId=<%=chapter.getComicId()%>&number=<%=chapter.getNumber()%>"
+                                       style="color: red"><small>Delete</small></a>
+                                    <% } %>
+                                </i></p>
+                            <% if(comment.isDeleted()){ %>
+                            <p style="color: red">This comment has been deleted</p>
+                            <% } else { %>
+                            <p>
+                                <%= comment.getContent()%>
+                            </p>
+
+                            <% } %>
+                            <div id="reply-form-<%= comment.getId() %>" style="display:none;">
+                                <form action="comment" method="post" style="margin-top: 1%">
+                                    <input type="hidden" name="action" value="add"/>
+                                    <input type="hidden" name="accountId" value="<%= user_id %>"/>
+                                    <input type="hidden" name="parentId" value="<%= comment.getId() %>"/>
+                                    <input type="hidden" name="chapterId" value="<%= chapter.getId() %>"/>
+                                    <input type="hidden" name="comicId" value="<%= chapter.getComicId() %>"/>
+                                    <input type="hidden" name="number" value="<%=chapter.getNumber()%>">
+
+                                    <div style="display: flex; justify-content: flex-start">
+                                        <textarea name="content" placeholder="Reply to this comment..."
+                                                  style="width: 50%"></textarea>
+                                        <button type="submit" style="max-height: 20px;margin-left: 10px; border-color: #f18121;
+    color: #f18121;
+    background-color: white;
+    border-radius: 4px;">Send
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <%
+                            if (comment.getChildren() != null && comment.getChildren().size() > 0) {
+                                for (Comment child : comment.getChildren()) {
+                        %>
+                        <ul class="comments">
+                            <li class="clearfix">
+                                <img src="<%=child.getImg() != null ? child.getImg() : "img/user.png"%>"
+                                     alt="<%=child.getUsername()%>" class="avatar">
+                                <div class="post-comments">
+                                    <p class="meta"><%= sdf.format(comment.getCreatedDate()) %> <a
+                                            href=""><%=child.getUsername()%>
+                                    </a>
+                                        <i class="pull-right">
+                                            <span class="reply-comment" style="cursor: pointer; color: #0a86db"
+                                                  onclick="toggleReplyForm(<%= comment.getId() %>)"
+                                            ><i class="fa fa-comment"></i> Reply</span>
+                                            <% if(isAdmin || child.getAccountId() == user_id){ %>
+                                            <a href="comment?id=<%=child.getId()%>&comicId=<%=chapter.getComicId()%>&number=<%=chapter.getNumber()%>"
+                                               style="color: red"><small>Delete</small></a>
+                                            <% } %>
+                                        </i></p>
+                                    <% if(child.isDeleted()){ %>
+                                    <p style="color: red">This comment has been deleted</p>
+                                    <% } else { %>
+                                    <p>
+                                    <%= child.getContent()%>
+                                    </p>
+
+                                    <% } %>
+                                    <div id="reply-form-<%= child.getId() %>" style="display:none;">
+                                        <form action="comment" method="post" style="margin-top: 1%">
+                                            <input type="hidden" name="action" value="add"/>
+                                            <input type="hidden" name="accountId" value="<%= user_id %>"/>
+                                            <input type="hidden" name="parentId" value="<%= comment.getId() %>"/>
+                                            <input type="hidden" name="chapterId" value="<%= chapter.getId() %>"/>
+                                            <input type="hidden" name="comicId" value="<%= chapter.getComicId() %>"/>
+                                            <input type="hidden" name="number" value="<%=chapter.getNumber()%>">
+
+                                            <div style="display: flex; justify-content: flex-start">
+                                                <textarea name="content" placeholder="Reply to this comment..."
+                                                          style="width: 50%"></textarea>
+                                                <button type="submit" style="max-height: 20px;margin-left: 10px; border-color: #f18121;
+    color: #f18121;
+    background-color: white;
+    border-radius: 4px;">Send
+                                                </button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <%
+                                }
+                            }
+                        %>
+                    </li>
+                    <%
+                        }
+                    %>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </body>
 </html>

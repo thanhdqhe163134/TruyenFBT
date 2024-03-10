@@ -20,11 +20,6 @@
 
 %>
 
-<%
-    String callingPageURI = (String) request.getAttribute("jakarta.servlet.forward.request_uri");
-    boolean isHome = false;
-    boolean isBooks = false;
-%>
 
 
 <link rel="stylesheet" href="css/Home.css">
@@ -78,7 +73,7 @@
                 <!-- <p style="font-weight: 600; font-size: 20px;">Admin</p> -->
                 <div style="width: 12px"></div>
                 <% if (img == null || img.equals("")) { %> <%
-                    img = "img/admin-pic.png";
+                    img = "img/user.png";
                 } %>
                 <img
                         src="<%=img%>"
@@ -86,11 +81,17 @@
                 />
                 <ul class="menu-items">
                     <label>
-                    <li><a href="myProfile?id=<%=user_id%>">Profile</a></li>
+                    <li><a href="profile">Profile</a></li>
                     </label>
                     <label>
                         <li><a href="history">History</a></li>
                     </label>
+                    <% if (isAdmin) { %>
+                    <label>
+                        <li><a href="list-account">Account List</a></li>
+                    </label>
+
+                    <% } %>
                     <label>
                         <li><a href="logout">Logout</a></li>
 

@@ -8,10 +8,14 @@ public class Comment {
     private int accountId;
     private int chapterId;
     private String content;
-    private int parentId;
+    private Integer parentId;
     private Timestamp createdDate;
     private Timestamp updatedDate;
     private boolean deleted;
+
+    private String username;
+
+    private String img;
 
 
     public Comment() {
@@ -29,6 +33,36 @@ public class Comment {
         this.updatedDate = updatedDate;
         this.deleted = deleted;
         this.children = children;
+    }
+
+    public Comment(int id, int accountId, int chapterId, String content, Integer parentId, Timestamp createdDate, Timestamp updatedDate, boolean deleted, String username, String img, List<Comment> children) {
+        this.id = id;
+        this.accountId = accountId;
+        this.chapterId = chapterId;
+        this.content = content;
+        this.parentId = parentId;
+        this.createdDate = createdDate;
+        this.updatedDate = updatedDate;
+        this.deleted = deleted;
+        this.username = username;
+        this.img = img;
+        this.children = children;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getId() {
@@ -63,11 +97,11 @@ public class Comment {
         this.content = content;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 

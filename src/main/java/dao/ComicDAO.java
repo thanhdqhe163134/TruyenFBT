@@ -379,10 +379,11 @@ public class ComicDAO {
         return new ArrayList<>(comics.values());
     }
 
-    public void updateViewCount() {
+    public void updateViewCount(int id) {
         try {
-            String sql = "UPDATE Comic SET [view] = [view] + 1";
+            String sql = "UPDATE Comic SET [view] = [view] + 1 where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

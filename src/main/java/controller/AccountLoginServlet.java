@@ -79,8 +79,7 @@ public class AccountLoginServlet extends HttpServlet {
             }
         } else {
             request.setAttribute("loginFailed", true);
-            request.getRequestDispatcher("/view/account-login.jsp").forward(request, response);
-
+            doGet(request, response);
         }
     }
 }

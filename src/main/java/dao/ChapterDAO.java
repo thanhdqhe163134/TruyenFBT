@@ -45,7 +45,7 @@ public class ChapterDAO {
                 chapter.setImages(images);
 
                 List<Comment> comments = new ArrayList<>();
-                String sql3 = "SELECT * FROM Comment WHERE chapterId = ?";
+                String sql3 = "SELECT Comment.*, Account.username, Account.img FROM Comment JOIN Account ON Comment.accountId = Account.id WHERE chapterId = ?";
                 PreparedStatement preparedStatement3 = connection.prepareStatement(sql3);
                 preparedStatement3.setInt(1, chapter.getId());
                 ResultSet resultSet3 = preparedStatement3.executeQuery();
@@ -58,9 +58,34 @@ public class ChapterDAO {
                     comment.setCreatedDate(resultSet3.getTimestamp("createdDate"));
                     comment.setUpdatedDate(resultSet3.getTimestamp("updatedDate"));
                     comment.setDeleted(resultSet3.getBoolean("deleted"));
+                    comment.setUsername(resultSet3.getString("username"));
+                    comment.setImg(resultSet3.getString("img"));
+                    comment.setParentId(resultSet3.getObject("parentId", Integer.class));
                     comments.add(comment);
                 }
-                chapter.setComments(comments);
+
+                // Create a list to hold root comments
+                List<Comment> rootComments = new ArrayList<>();
+                // Iterate over the comments again
+                for (Comment comment : comments) {
+                    // If the comment has a parentId, find the parent comment and add this comment to its children
+                    if (comment.getParentId() != null) {
+                        for (Comment potentialParent : comments) {
+                            if (potentialParent.getId() == comment.getParentId()) {
+                                if (potentialParent.getChildren() == null) {
+                                    potentialParent.setChildren(new ArrayList<>());
+                                }
+                                potentialParent.getChildren().add(comment);
+                                break;
+                            }
+                        }
+                    } else {
+                        // If the comment doesn't have a parentId, it's a root comment
+                        rootComments.add(comment);
+                    }
+                }
+                // Set the comments of the chapter to the root comments
+                chapter.setComments(rootComments);
             }
         } catch (SQLException e) {
             e.printStackTrace();

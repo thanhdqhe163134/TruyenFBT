@@ -63,7 +63,7 @@ public class ComicServlet extends HttpServlet {
                 request.setAttribute("chapter", currentChapter);
                 request.setAttribute("allChapters", chapterDAO.getAllChaptersByComicId(Integer.parseInt(id)));
                 request.getRequestDispatcher("view/chapter.jsp").forward(request, response);
-                comicDAO.updateViewCount();
+                comicDAO.updateViewCount(Integer.parseInt(id));
 
 
             } else {

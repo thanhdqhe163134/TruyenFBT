@@ -91,3 +91,12 @@ document.querySelectorAll('.delete-image').forEach(function(button) {
         manageImage('delete', imageId, null);
     });
 });
+
+function toggleReplyForm(commentId) {
+    var replyForm = document.getElementById('reply-form-' + commentId);
+    if (replyForm.style.display === 'none') {
+        replyForm.style.display = 'block';
+    } else {
+        replyForm.style.display = 'none';
+    }
+}
